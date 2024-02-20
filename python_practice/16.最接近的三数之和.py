@@ -3,7 +3,7 @@
 #
 # [16] 最接近的三数之和
 #
-from typing import List
+# from typing import List
 # @lc code=start
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
@@ -30,7 +30,7 @@ class Solution:
             i += 1
         return result
             
-s = Solution()
-s.threeSumClosest([-1, 2, 1, -4], 1)
+# s = Solution()
+# s.threeSumClosest([-1, 2, 1, -4], 1)
 # @lc code=end
 
