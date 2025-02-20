@@ -5,10 +5,15 @@
  */
 
 // @lc code=start
+#include <algorithm>
+#include <vector>
+#include <functional>
+using namespace std;
+
 class Solution {
 public:
-    int leastInterval(vector<char>& tasks, int n) {
-        vector <int> vec(26, 0);
+    int leastInterval(std::vector<char>& tasks, int n) {
+        std::vector <int> vec(26, 0);
         for (char c : tasks) {
             vec[c - 'A']++;
         }

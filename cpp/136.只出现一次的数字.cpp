@@ -4,10 +4,11 @@
  * [136] 只出现一次的数字
  */
 
+#include<vector>
 // @lc code=start
 class Solution {
 public:
-    int singleNumber(vector<int>& nums) {
+    int singleNumber(std::vector<int>& nums) {
         int answer = 0;
         for (int num: nums)
         {
