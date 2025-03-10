@@ -1,5 +1,6 @@
 // #include "54.螺旋矩阵.cpp"
-#include "53.最大子数组和.cpp"
+// #include "53.最大子数组和.cpp"
+#include "18.四数之和.cpp"
 #include<iostream>
 
 int main() {
@@ -14,6 +15,6 @@ int main() {
   // std::cout << endl;
   
   // 53
-  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-  int result = sol.maxSubArray(nums);
+  vector<int> nums = {0};
+  auto result = sol.fourSum(nums, 0);
 }
