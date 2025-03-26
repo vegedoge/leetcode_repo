@@ -3,7 +3,8 @@
  *
  * [3] 无重复字符的最长子串
  */
-
+#include <unordered_set>
+using namespace std;
 // @lc code=start
 class Solution {
 public:
@@ -11,13 +12,15 @@ public:
         int left = 0;
         int right = 0;
         int max_len = 0;
-        unordered_set<int> local;
-        for (right = 0; right < s.size(); right++) {
-            while(local.find(s[right]) != local.end()) {
-                local.erase(s[left++]);
+        unordered_set<int> window;
+        while(right < s.size()) {
+            while(window.find(s[right]) != window.end()) {
+                window.erase(s[left++]);
             }
-            max_len = max(max_len, right - left + 1);
-            local.insert(s[right]);
+            window.insert(s[right]);
+            max_len = max(max_len, (right - left + 1));
+
+            right++;
         }
         return max_len;
     }
