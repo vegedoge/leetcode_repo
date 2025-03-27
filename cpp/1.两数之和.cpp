@@ -4,20 +4,27 @@
  * [1] 两数之和
  */
 #include <unordered_map>
+#include <vector>
+using namespace std;
 // @lc code=start
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        std::unordered_map<int, int> mapping;
-        for (int i = 0; i < nums.size(); i++) {
-            auto iter = mapping.find(target - nums[i]);
-            if (iter != mapping.end()) {
-                return { i, iter->second };
+        std::unordered_map<int, int> mappings;
+        int y;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            y = target - nums[i];
+            if (mappings.find(y) != mappings.end())
+            {
+                return {i, mappings[y]};
             }
-
-            mapping[nums[i]] = i;
+            else
+            {
+                mappings[nums[i]] = i;
+            }
         }
-        return {};
+        return {}; // Return empty vector if no solution found
     }
 };
 // @lc code=end

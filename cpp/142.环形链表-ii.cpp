@@ -18,14 +18,15 @@ public:
     ListNode *detectCycle(ListNode *head) {
         ListNode *fast = head;
         ListNode *slow = head;
-        while (fast != nullptr && fast->next != nullptr) {
+        while (fast && fast->next) {
             fast = fast->next->next;
             slow = slow->next;
-            if (fast == slow) {
+            if (slow == fast) {
                 break;
             }
         }
-        if (fast == nullptr || fast->next == nullptr) {
+
+        if (!fast || !fast->next) {
             return nullptr;
         } else {
             slow = head;
