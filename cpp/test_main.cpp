@@ -1,7 +1,9 @@
 // #include "54.螺旋矩阵.cpp"
 // #include "53.最大子数组和.cpp"
-#include "18.四数之和.cpp"
+// #include "18.四数之和.cpp"
+#include "322.零钱兑换.cpp"
 #include<iostream>
+using namespace std;
 
 int main() {
   Solution sol;
@@ -15,6 +17,8 @@ int main() {
   // std::cout << endl;
   
   // 53
-  vector<int> nums = {0};
-  auto result = sol.fourSum(nums, 0);
+  std::vector<int> nums = {1, 2, 5};
+  int target = 9;
+  auto result = sol.coinChange(nums, target);
+  printf("output: %d \n", result);
 }
