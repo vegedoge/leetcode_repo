@@ -9,25 +9,21 @@ using namespace std;
 class Solution {
 private:
     vector<vector<int>> results;
-    vector<int> result;
-
-    void backtracking(vector<int>& nums, int startIndex){
-        if (startIndex == nums.size()) {
+    void backTracking(vector<int>& nums, int startIndex) {
+        if (nums.size() == startIndex) {
             results.emplace_back(nums);
             return;
         }
 
-        for (int i = startIndex; i < nums.size(); i++) {
+        for(int i = startIndex; i < nums.size(); i++) {
             std::swap(nums[i], nums[startIndex]);
-            backtracking(nums, startIndex + 1);
+            backTracking(nums, startIndex + 1);
             std::swap(nums[i], nums[startIndex]);
         }
     }
 public:
     vector<vector<int>> permute(vector<int>& nums) {
-        result.clear();
-        results.clear();
-        backtracking(nums, 0);
+        backTracking(nums, 0);
         return results;
     }
 };
