@@ -1,7 +1,8 @@
 // #include "54.螺旋矩阵.cpp"
 // #include "53.最大子数组和.cpp"
 // #include "18.四数之和.cpp"
-#include "322.零钱兑换.cpp"
+// #include "322.零钱兑换.cpp"
+#include "108.将有序数组转换为二叉搜索树.cpp"
 #include<iostream>
 using namespace std;
 
@@ -17,8 +18,7 @@ int main() {
   // std::cout << endl;
   
   // 53
-  std::vector<int> nums = {1, 2, 5};
-  int target = 9;
-  auto result = sol.coinChange(nums, target);
-  printf("output: %d \n", result);
+  std::vector<int> nums = {-10, -3, 0, 5, 9};
+
+  auto result = sol.sortedArrayToBST(nums);
 }
