@@ -49,5 +49,6 @@
         "streambuf": "cpp",
         "typeinfo": "cpp"
     },
-    "cmake.sourceDirectory": "/home/melon/code_space/leetcode_repo/cpp"
+    "cmake.sourceDirectory": "/home/melon/code_space/leetcode_repo/cpp",
+    "C_Cpp.errorSquiggles": "disabled"
 }
