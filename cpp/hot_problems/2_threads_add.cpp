@@ -1,39 +1,42 @@
-#include <mutex>
 #include <iostream>
-#include <condition_variable>
+#include <mutex>
 #include <thread>
+#include <condition_variable>
 
 std::mutex mtx;
 std::condition_variable cv;
-int counter = 1;
-const int MAX_COUNT = 100;
+int counter = 0;
+const int MAX_COUNT = 20;
 
-void print_number(int thread_id) {
-  while (true) {
+void print_num(int thread_id) {
+  while(true) {
     std::unique_lock<std::mutex> lock(mtx);
-    cv.wait(lock, [thread_id]
-            { return (counter % 2 == thread_id) || counter > MAX_COUNT; });
+
+    cv.wait(lock, [&thread_id]
+            { return counter % 2 == thread_id || counter > MAX_COUNT; });
 
     if (counter > MAX_COUNT) {
-      cv.notify_one();
+      if (thread_id == 3) {
+        std::cout << "Thread: " << thread_id << "end " << std::endl;
+      }
+      cv.notify_all();
       break;
     }
 
-    std::cout << "Thread: " << thread_id << counter << std::endl;
-
+    std::cout << "Thread: " << thread_id << "at " << counter << std::endl;
     counter++;
-    cv.notify_one();
+    cv.notify_all();
   }
 }
 
 int main() {
-  std::thread odd_thread(print_number, 1);
-  std::thread even_thread(print_number, 0);
+  std::thread thread_1(print_num, 1);
+  std::thread thread_2(print_num, 0);
+  std::thread thread_3(print_num, 3);
 
-  odd_thread.join();
-  even_thread.join();
-
-  std::cout << "Finished" << std::endl;
+  thread_1.join();
+  thread_2.join();
+  thread_3.join();
 
   return 0;
 }
